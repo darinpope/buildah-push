@@ -1,0 +1,19 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: action
+name: 'buildah-push'
+description: 'buildah-push'
+
+inputs:
+  image-name:
+    description: 'image name'
+    required: true
+
+runs:
+  using: composite
+  steps:
+    - id: buildah-push
+      name: Use Buildah to push image
+      uses: docker://quay.io/buildah/stable:v1.32.2
+      shell: sh
+      run: |
+        buildah push ${{ input.image-name }}
