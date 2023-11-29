@@ -16,4 +16,4 @@ runs:
       uses: docker://quay.io/buildah/stable:v1.32.2
       shell: sh
       run: |
-        buildah push ${{ input.image-name }}
+        buildah push ${{ inputs.image-name }}
